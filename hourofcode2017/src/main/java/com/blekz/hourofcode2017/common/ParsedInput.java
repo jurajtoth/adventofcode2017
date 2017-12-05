@@ -23,11 +23,30 @@ public class ParsedInput {
 	}
 	
 	public String getValue(Integer row, Integer column) {
+		if(data.get(row) == null) {
+			return null;
+		}
 		return data.get(row).get(column);
+	}
+	
+	public Integer getValueAsInteger(Integer row, Integer column) {
+		String value = getValue(row, column);
+		if(value == null) {
+			return null;
+		}
+		return new Integer(value);
 	}
 	
 	public String getSingleValue() {
 		return data.get(0).get(0);
+	}
+	
+	public void setValue(Integer row, Integer column, String value) {
+		data.get(row).put(column, value);
+	}
+	
+	public void setValue(Integer row, Integer column, Integer value) {
+		setValue(row, column, value+"");
 	}
 	
 	public Integer getSingleValueAsInteger() {
