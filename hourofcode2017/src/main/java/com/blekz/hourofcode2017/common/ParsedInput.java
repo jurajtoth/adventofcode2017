@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class ParsedInput {
 	
@@ -33,6 +34,10 @@ public class ParsedInput {
 		return new ArrayList<String>(data.get(row).values());
 	}
 	
+	public List<Integer> getRowValuesAsInteger(Integer row) {
+		return getRowValues(row).stream().map(s -> new Integer(s)).collect(Collectors.toList());
+	}
+	
 	public List<String> getColumnValues(Integer column) {
 		List<String> values = new ArrayList<>();
 		for(Map<Integer, String> row : data.values()) {
@@ -42,6 +47,10 @@ public class ParsedInput {
 			}
 		}
 		return values;
+	}
+	
+	public List<Integer> getColumnValuesAsInteger(Integer column) {
+		return getColumnValues(column).stream().map(s -> new Integer(s)).collect(Collectors.toList());
 	}
 	
 	public Integer numberOfLines() {
