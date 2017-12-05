@@ -30,6 +30,10 @@ public class ParsedInput {
 		return data.get(0).get(0);
 	}
 	
+	public Integer getSingleValueAsInteger() {
+		return new Integer(getSingleValue());
+	}
+	
 	public List<String> getRowValues(Integer row) {
 		return new ArrayList<String>(data.get(row).values());
 	}
