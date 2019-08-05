@@ -14,6 +14,15 @@ import java.util.stream.Collectors;
 public class ParsedInput {
 	
 	private Map<Integer, Map<Integer, String>> data = new TreeMap<>();
+	private List<String> unparsedLines = new ArrayList<>();
+	
+	public void addUnparsedData(String line) {
+		unparsedLines.add(line);
+	}
+	
+	public List<String> getUnparsedLines() {
+		return unparsedLines;
+	}
 	
 	public void addData(Integer row, Integer column, String val) {
 		if(data.get(row) == null) {
@@ -86,6 +95,7 @@ public class ParsedInput {
 			int row = 0;
 			while(reader.ready()) {
 				String line = reader.readLine();
+				parsedInput.addUnparsedData(line);
 				StringTokenizer tokenizer = new StringTokenizer(line);
 				int column = 0;
 				while(tokenizer.hasMoreTokens()) {
